@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Cards from './Pages/Cards';
+import {Routes, Route} from "react-router-dom"
+import AddNewCard from './Pages/AddNewCard';
+import { getUser } from './slices/userSlice'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 function App() {
+  const dispatch= useDispatch()
+
+  useEffect(()=>{
+    dispatch(getUser())
+  },[])
+
+
+  const {user,cardName,cards} = useSelector((state)=>state.user)
+  const username = user?.name
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={ <Cards user={user} cardName={cardName} data={cards} />}/>
+        <Route path='/AddNew' element={<AddNewCard data={cardName} cardName={username} />}/>
+      </Routes>
     </div>
   );
 }

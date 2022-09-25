@@ -1,38 +1,199 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@import url('http://fonts.cdnfonts.com/css/credit-card');
+
+body::-webkit-scrollbar{
+  display: none;
+}
 .App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
+  margin: auto;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Card.New{
+  background: rgb(222, 222, 222);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Card{
+  width: 450px;
+  height: 250px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto;
+  position: relative;
+  box-shadow: 0px -1px 8px rgba(34, 34, 34, 0.218);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Card h3, .Card h2{
+  font-family:'Credit Card', sans-serif;
+  color: #fff;
+  text-shadow:-1px -1px 0px rgba(255,255,255,0.3), 2px 2px 0px rgba(0,0,0,0.8);
+  font-weight: 100;
+}
+.Card h2{
+  font-size: 20px;
+}
+.Card h3{
+  font-size: 15px;
+}
+.TopOfCard{
+  height: 25%;
+}
+.TopOfCard p{
+  position: absolute;
+  left: 30px;
+}
+.NfcImg{
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/EMVCoContactlessIndicator.svg/1682px-EMVCoContactlessIndicator.svg.png");
+  background-size: contain;
+  width: 40px;
+  margin: 2rem;
+  transform: rotate(-90deg);
+  aspect-ratio: 1;
+  background-repeat: no-repeat;
+}
+.bottomOfCard{
+  padding-top: .5rem;
+  display: flex;
+  justify-content: space-around;
+}
+.addCardContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 80%;
+}
+input, select, option{
+  height: 40px;
+  font-size: 18px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-top: .5rem;
+}
+button{
+  margin-top: .5rem;
+  background: black;
   color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: .7rem 2rem;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all .5s ease;
+}
+button.AddNewBtn{
+  background: white;
+  color: black;
+}
+.hoverMenu .hoverBtn:hover{
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+button:hover{
+  background: rgb(0, 0, 0);
+  color: #fff;
+}
+.inactive .Card:not(:last-child){
+  margin-bottom: -200px;
+  transition: all .5s ease;
+}
+.inactive{
+  display: flex;
+  margin-top: 3rem;
+  flex-direction: column;
+}
+.inactive:hover .Card:not(:last-child) {
+  transition: all .5s ease;
+  margin-bottom: 10px;
+}
+.inactive .Card:hover .hoverMenu{
+  display: flex;
+  justify-content: space-evenly;
+}
+.hoverMenu{
+  display: none;
+  position: absolute;
+  width: 450px;
+  height: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(3px);
+  background: rgba(50, 50, 50, 0.381);
+  border-radius: 10px;
+}
+.hoverMenu.active{
+  align-items: center;
+  justify-content: space-evenly;
+}
+.Card .bgImg{
+  background-size: cover;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+.Card.Visa{
+  background: linear-gradient(25deg, #142C44, rgb(55, 113, 229) );  
+}
+.Card.Visa .bgImg{
+  background-image: url("./images/visa.png");
+  width: 100px;
+  height: 40px;
+}
+.Card.Amex{
+  background: linear-gradient(-40deg, #E1D38F, #C4B470, #EAE0BA, #C4B470, #E1D38F ); 
+}
+.Card.Amex .bgImg{
+  background-image: url("./images/amex1.png");
+  width: 90px;
+  height: 110px;
+}
+.Card.SEB{
+  background: linear-gradient(25deg, #82CB4B, #53942D ); 
+}
+.Card.SEB .bgImg{
+  background-image: url("./images/SEB_logo.svg.png");
+  width: 70px;
+  right: 20px;
+  aspect-ratio: 1;
+}
+.Card.Bitcoin{
+  background: linear-gradient(25deg, #262626  ,#262626) ; 
+}
+.Card.Bitcoin .bgImg{
+  background-image: url("./images/bitcoin-ny.png");
+  width: 100px;
+  aspect-ratio: 1;
+}
+.cardNum, .cardName, .valid, .ccv, .vendor{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+}
+input,select,form{
+  width: 100%;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form button{
+  width: 80%;
+}
+.FormContainer2{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+.valid, .ccv{
+  width: 48%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
