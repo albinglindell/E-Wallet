@@ -9,21 +9,12 @@ function Card({cardNum, username,  expireYear, expireMonth, New, newData, vendor
     return newNum
     }
     const name =  `${username?.first} ${username?.last}`.toUpperCase()
-    let bgColor
 
     const dispatch = useDispatch()
-        if(vendor ==="Visa"){
-            bgColor="Visa"
-        }else if(vendor ==="Amex"){
-            bgColor = "Amex"
-        }else if(vendor==="SEB"){
-            bgColor = "SEB"
-        }else if(vendor==="Bitcoin"){
-            bgColor = "Bitcoin"
-        }
+    
 
     return (
-        <div className={New ? "Card New": `Card ${bgColor}`}>
+        <div className={New ? "Card New": `Card ${vendor}`}>
             <div className="bgImg"></div>
         <div className="TopOfCard">
             <p>{vendor ? vendor : newBank}</p>
