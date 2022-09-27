@@ -13,7 +13,7 @@ function App() {
   
   useEffect(()=>{
     dispatch(getUser())
-  },[])
+  },[dispatch])
 
 
   const {user,cardName,cards} = useSelector((state)=>state.user)
