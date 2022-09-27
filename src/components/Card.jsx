@@ -5,7 +5,7 @@ import { changeActive, deleteCard } from '../slices/userSlice'
 
 function Card({cardNum, username,  expireYear, expireMonth, New, newData, vendor,month,year, id, newBank}) {
     let cardNumFunc = (num)=>{
-    let newNum = [...num].map((number,i)=> (i)%4 == 0 ?  " " + number : number).join("").trim()
+    let newNum = [...num].map((number,i)=> (i)%4 === 0 ?  " " + number : number).join("").trim()
     return newNum
     }
     const name =  `${username?.first} ${username?.last}`.toUpperCase()
