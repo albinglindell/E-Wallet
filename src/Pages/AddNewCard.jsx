@@ -23,7 +23,8 @@ function AddNewCard() {
         let BANK = document.querySelector("#BANK").value
         let CCV = document.querySelector("#CCV").value
 
-        if(BANK === "vendor" || CARDNUM =="" || CARDNUM.length > 16 || CARDNUM.length < 16 || VALID.length < 4 || VALID.length >4 || CCV =="" ){
+        if(BANK === "vendor" || CARDNUM ==="" || CARDNUM.length > 16 || CARDNUM.length < 16 || VALID.length < 4 || VALID.length >4 || CCV ==="" ){
+            
             alert("Måste fylla i allt rätt")
             return
         }else{
@@ -63,7 +64,8 @@ function AddNewCard() {
         let BANK = document.querySelector("#BANK").value
         setVendor(BANK)
     }
-    let cardNumSpace = [...newData].map((d,i)=> (i)%4 == 0 ?  " " + d : d).join("").trim()
+    
+    let cardNumSpace = [...newData].map((d,i)=> (i)%4 === 0 ?  " " + d : d).join("").trim()
 
     return (
         <div className="addCardContainer">
